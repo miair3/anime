@@ -1,0 +1,149 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Позволяет использовать абсолютные позиции для дочерних элементов */
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Обеспечивает покрытие всего экрана видео */
+    z-index: -1; /* Устанавливает видео позади других элементов */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    height: 100px;
+    background: rgba(21, 0, 50, 0.461); /* Полупрозрачный фон для хедера */
+    opacity: 0; /* Изначально скрыто */
+    animation: slideIn 1s forwards; /* Анимация появления заголовка */
+    animation-delay: 0.5s; /* Задержка перед началом анимации */
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(-100%); /* Начальное положение за пределами экрана */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); /* Конечное положение на экране */
+        opacity: 1;
+    }
+}
+
+.nav-left ul, .nav-right ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-left ul li, .nav-right ul li {
+    margin: 0;
+}
+
+.nav-left ul li a, .nav-right ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.3); /* Полупрозрачный фон */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Добавляем трансформацию при наведении */
+}
+
+.nav-left ul li a:hover, .nav-right ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.6); /* Более светлый фон при наведении */
+    transform: scale(1.1); /* Увеличиваем размер кнопки при наведении */
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.5); /* Добавляем тень при наведении */
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    opacity: 0.8; /* Прозрачный логотип */
+}
+
+.anime-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 2; /* Убедитесь, что текст выше других элементов */
+}
+
+.anime-text h1 {
+    font-size: 35px;
+    opacity: 0; /* Изначально скрыто */
+    animation: fadeInUp 1s forwards 0.5s; /* Анимация появления текста */
+}
+
+/* Анимация появления текста */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Сдвинуть текст вниз */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Вернуть на место */
+    }
+}
+
+/* Стили для кнопки */
+.anime-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Добавляем тень при наведении */
+}
+
+.anime-button:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.5); /* Добавляем тень при наведении */
+    animation: pulse 0.5s infinite; /* Пульсация кнопки при наведении */
+}
+
+/* Пульсация кнопки */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}

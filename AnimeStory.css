@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #121212;
+}
+
+.background-video {
+    position: fixed; /* Фиксированное положение */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* За другими элементами */
+}
+
+.container {
+    text-align: center;
+    padding: 50px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    z-index: 1;
+    animation: fadeInContainer 2s ease-out;
+}
+
+@keyframes fadeInContainer {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.title {
+    color: rgba(149, 0, 255, 0.5);
+    margin-bottom: 30px;
+    font-size: 48px;
+    animation: fadeInText 2s ease-in-out;
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 колонок */
+    grid-gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.anime-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden; /* Обрезает изображение, если оно превышает размеры карточки */
+}
+
+.anime-card:hover {
+    transform: translateY(-20px); /* Карточка поднимается выше */
+    box-shadow: 0 20px 30px 10px rgba(149, 0, 255, 0.7); /* Более яркая тень */
+}
+
+.anime-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.anime-img:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.anime-title {
+    margin: 15px 0;
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.watch-button {
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.watch-button:hover {
+    background-color: rgba(149, 0, 255, 0.7);
+    transform: translateY(-5px); /* Кнопка тоже поднимается при наведении */
+    box-shadow: 0 10px 20px rgba(149, 0, 255, 0.7);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-text {
+    animation: fadeInText 2s ease-out;
+}
+
+.animate-card {
+    animation: fadeIn 2s ease-out;
+}
+
+.animate-img {
+    animation: fadeIn 2s ease-out;
+}
+
+.animate-button {
+    animation: fadeIn 2s ease-out;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .anime-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах */
+    }
+}
+
+@media (max-width: 480px) {
+    .anime-grid {
+        grid-template-columns: 1fr; /* 1 колонка на телефонах */
+    }
+}
